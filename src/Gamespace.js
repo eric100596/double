@@ -1,22 +1,31 @@
 import React from 'react';
 import './Gamespace.css';
+import { Rectangle } from 'draw-shape-reactjs';
 
 function Gamespace(props) {
     const { box, button1, button2, button3 } = props;
   return (
       <>
-
-        <div>
+        <div class="playArea">
+            <h1>GAMESPACE</h1>
+        <Rectangle
+                    corner={[130, 80]}
+                    height={500}
+                    width={1000}
+                    color='black'
+                />
+        </div>
+        <div class="btn">
             { Gamespace }
-            <button1>
+            <button>
                 New Game
-            </button1>
-            <button2>
+            </button>
+            <button>
                 Number of Players
-            </button2>
-            <button3>
+            </button>
+            <button>
                 Shuffle & Deal
-            </button3>
+            </button>
         </div>
     </>
   );

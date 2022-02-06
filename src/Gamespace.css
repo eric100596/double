@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.playArea {
+    justify-content: center;
+}

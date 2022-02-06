@@ -6,7 +6,7 @@ function Header(props) {
   return (
       <>
 
-        <div>
+        <div class="top">
             { title }
             { subTitle }
         </div>
