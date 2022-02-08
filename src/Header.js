@@ -8,6 +8,7 @@ function Header(props) {
 
         <div class="top">
             { title }
+            <br/>
             { subTitle }
         </div>
     </>
