@@ -1,12 +1,21 @@
-h1 {
-    text-align: center;
+.playArea {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
-.btn {
+.gameControls {
     display: flex;
     justify-content: space-around;
 }
 
-.playArea {
-    justify-content: center;
+.table {
+    width: 80%;
+    height: 100%;
+    border: 5px solid black;
+    text-align: center;
+    
 }

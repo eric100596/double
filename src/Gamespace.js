@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Gamespace.css';
-import { Rectangle } from 'draw-shape-reactjs';
+
 
 function Gamespace(props) {
-    const { box, button1, button2, button3 } = props;
+    const [numberOfPlayers, setNumberOfPlayers] = useState(0);
+
+    useEffect(() => {
+        document.title = 'You clicked ${numberOfPlayers} times';
+    }, [numberOfPlayers])
+
   return (
       <>
-        <div class="playArea">
-            <h1>GAMESPACE</h1>
-        <Rectangle
-                    corner={[130, 80]}
-                    height={500}
-                    width={1000}
-                    color='black'
-                />
-        </div>
-        <div class="btn">
-            { Gamespace }
-            <button>
-                New Game
-            </button>
-            <button>
-                Number of Players
-            </button>
-            <button>
-                Shuffle & Deal
-            </button>
-        </div>
+      <div className='playArea'>
+                <div className="table">
+                    <h1>GAMESPACE</h1>
+                </div> 
+          <div className='gameControls'>
+                    <button>
+                     New Game
+                    </button>
+                    {/* <button>
+                     Number of Players
+                    </button> */}
+                    <button>
+                    Shuffle & Deal
+                    </button>
+                
+        </div>   
+    </div>
+        
     </>
   );
 }
