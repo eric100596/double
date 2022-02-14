@@ -62,7 +62,7 @@ function Gamespace() {
         onChange={handleChange}
         value={numberOfPlayers}
         /> */}
-        <div>
+        <div className="gameStatus">
         <label for="gameStatus">How many players?</label>
              <select id="gameStatus" name="gameStatus">
             <option value="">Select</option>
@@ -74,10 +74,6 @@ function Gamespace() {
 
 
 <div className='playArea'>
-      <div className='logo1'>
-      <img src='Dbl-7 Logo.png' alt />
-      </div>
-      
           <div className="table">
               <h1>GAMESPACE</h1>
           </div> 
