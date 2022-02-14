@@ -55,18 +55,27 @@ function Gamespace() {
 
     return (
         <div> 
-            How many players?
+            {/* How many players?
         <input 
         type={Number}
         numberOfPlayers="numberOfPlayers"
         onChange={handleChange}
         value={numberOfPlayers}
-        />
+        /> */}
+        <div>
+        <label for="gameStatus">How many players?</label>
+             <select id="gameStatus" name="gameStatus">
+            <option value="">Select</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            </select>
+        </div>
 
 
 <div className='playArea'>
       <div className='logo1'>
-      <img src='Dbl-7 Logo.png'/>
+      <img src='Dbl-7 Logo.png' alt />
       </div>
       
           <div className="table">
