@@ -55,16 +55,10 @@ function Gamespace() {
 
     return (
         <div> 
-            {/* How many players?
-        <input 
-        type={Number}
-        numberOfPlayers="numberOfPlayers"
-        onChange={handleChange}
-        value={numberOfPlayers}
-        /> */}
+            
         <div className="gameStatus">
         <label for="gameStatus">How many players?</label>
-             <select id="gameStatus" name="gameStatus">
+             <select id="gameStatus" name="gameStatus" onChange={handleChange}>
             <option value="">Select</option>
             <option value="2">2</option>
             <option value="3">3</option>
