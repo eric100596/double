@@ -8,9 +8,9 @@ function Header(props) {
         <div className="top">
        
           <div className="top1">
-          <img src='Dbl-7 Logo.png' alt='Dbl-7 Logo.png' height='100px' width='60px' />
+          <img src='Dbl-7 Logo.png' alt='Dbl-7 Logo.png' height='140px' width='100px' />
             { title }
-            <img src='Dbl-7 Logo.png' alt='Dbl-7 Logo.png' height='100px' width='60px' />
+            <img src='Dbl-7 Logo.png' alt='Dbl-7 Logo.png' height='140px' width='100px' />
           </div>
           <div className="top2">
             { subTitle }
