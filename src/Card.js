@@ -4,7 +4,7 @@ import './Card.css';
 function Card(props) {
   return (
     <>
-      <div>
+      <div curHands='hands'>
         Hello {JSON.stringify(props.sides)}
       </div>
     </>

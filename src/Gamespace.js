@@ -64,13 +64,12 @@ function Gamespace(props) {
                 <div className='playArea'>
                     <h1>GAMESPACE</h1>
                     <div className="table">
-                        {hands[0]},
-                        {hands[1]},
-                        {hands[2]}
+                        {hands[0]}, {hands[1]}, {hands[2]}, {hands[3]}
                     </div>
                     <div className='gameControls'>
                         <label>How many players?</label>
                         <select onChange={handleChange}>
+                            <option value="none" selected disabled>Select an Option</option>
                             <option value='2'>2</option>
                             <option value='3'>3</option>
                             <option value='4'>4</option>
