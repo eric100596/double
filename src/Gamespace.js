@@ -4,9 +4,9 @@ import './Gamespace.css';
 
 function Gamespace(props) {
     let deck = [];
-    for (let i = 0; i < 8; i++) {
-        for (let k = 0; k < 8; k++) {
-            if (i <= k) {
+    for (let i = 7; i > -1; i--) {
+        for (let k = 7; k > -1; k--) {
+            if (i >= k) {
                 deck.push(<Card sides={{ sideA: i, sideB: k }}></Card>)
             }
         }
@@ -64,7 +64,7 @@ function Gamespace(props) {
                 <div className='playArea'>
                     <h1>GAMESPACE</h1>
                     <div className="table">
-                        {hands[0]}, {hands[1]}, {hands[2]}, {hands[3]}
+                        {hands[0]} {hands[1]} {hands[2]} {hands[3]}
                     </div>
                     <div className='gameControls'>
                         <label>How many players?</label>

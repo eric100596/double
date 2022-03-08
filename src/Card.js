@@ -4,8 +4,8 @@ import './Card.css';
 function Card(props) {
   return (
     <>
-      <div curHands='hands'>
-        Hello {JSON.stringify(props.sides)}
+      <div className='vertical default'>
+        <img src={props.sides.sideA + '_' + props.sides.sideB + '.png'} ></img> 
       </div>
     </>
   )

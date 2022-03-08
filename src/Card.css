@@ -1,4 +1,8 @@
-.hands {
-    display: flex;
-    flex-direction: column;
+.vertical {
+    transform: rotate(90deg);
+}
+
+.default img {
+    object-fit: contain;
+    width: 150px;
 }
