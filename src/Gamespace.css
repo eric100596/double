@@ -17,6 +17,10 @@
     height: 100%;
     border: 5px solid black;
     text-align: center;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: 1.5fr 1.5fr 1.5fr 1.5fr;
 }
 
 .logo1 {

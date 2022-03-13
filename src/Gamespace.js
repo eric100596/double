@@ -3,7 +3,9 @@ import Card from './Card';
 import './Gamespace.css';
 
 function Gamespace(props) {
+    //Create empty array to hold deck
     let deck = [];
+    //Use for loop to create deck    
     for (let i = 7; i > -1; i--) {
         for (let k = 7; k > -1; k--) {
             if (i >= k) {
@@ -11,7 +13,7 @@ function Gamespace(props) {
             }
         }
     }
-
+//Function to generate random cards in each hand
     let getNextCard = () => {
         return getRandomCard();
     }
@@ -31,6 +33,7 @@ function Gamespace(props) {
     useEffect(() => {
         let tempHands = [];
         let numberOfCardsPerHand;
+        //Determines number of players/hands
         switch (numberOfPlayers) {
             case 2:
                 numberOfCardsPerHand = 9;
@@ -43,7 +46,7 @@ function Gamespace(props) {
                 break;
         }
 
-
+//Puts random cards in each player's hand
         for (let i = 0; i < numberOfPlayers; i++) {
             let hand = [];
             for (let j = 0; j < numberOfCardsPerHand; j++) {
