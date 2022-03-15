@@ -6,9 +6,9 @@ function Gamespace(props) {
     //Create empty array to hold deck
     let deck = [];
     //Use for loop to create deck    
-    for (let i = 7; i > -1; i--) {
-        for (let k = 7; k > -1; k--) {
-            if (i >= k) {
+    for (let i = 0; i < 8; i++) {
+        for (let k = 0; k < 8; k++) {
+            if (i <= k) {
                 deck.push(<Card sides={{ sideA: i, sideB: k }}></Card>)
             }
         }
@@ -33,7 +33,7 @@ function Gamespace(props) {
     useEffect(() => {
         let tempHands = [];
         let numberOfCardsPerHand;
-        //Determines number of players/hands
+        //Determines number of players/hands/cards per hand
         switch (numberOfPlayers) {
             case 2:
                 numberOfCardsPerHand = 9;
