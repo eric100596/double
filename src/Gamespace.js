@@ -67,7 +67,10 @@ function Gamespace(props) {
                 <div className='playArea'>
                     <h1>GAMESPACE</h1>
                     <div className="table">
-                        {hands[0]} {hands[1]} {hands[2]} {hands[3]}
+                        <div style={{display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'end', alignSelf: 'center'}}>{hands[3]}</div>
+                        <div style={{display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center'}}>{hands[0]}</div>
+                        <div style={{display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, alignSelf: 'center'}}>{hands[2]}</div>
+                        <div style={{display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', alignSelf: 'end'}}>{hands[1]}</div>
                     </div>
                     <div className='gameControls'>
                         <label>How many players?</label>
