@@ -19,6 +19,8 @@
     height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    padding-top: 70px;
+    padding-bottom: 50px;
 }
 
 .logo1 {
