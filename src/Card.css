@@ -4,8 +4,8 @@
 
 .default img {
     object-fit: contain;
-    width: 150px;
+    width: 120px;
     display: inline-flex;
     flex-wrap: wrap;
-    margin: -30px;
+    margin: -20px;
 }

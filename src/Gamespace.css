@@ -19,13 +19,13 @@
     height: 100vh;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    padding-top: 70px;
+    padding-top: 55px;
     padding-bottom: 50px;
 }
 
 .logo1 {
     width: 10%;
-    height: 10%;
+    height: 20%;
 }
 
 #gameStatus {
