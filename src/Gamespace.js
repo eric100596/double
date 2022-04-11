@@ -5,22 +5,32 @@ import './Gamespace.css';
 function Gamespace(props) {
     //Create empty array to hold deck
     let deck = [];
+    let cardValues = [];
     //Use for loop to create deck    
     for (let i = 0; i < 8; i++) {
         for (let k = 0; k < 8; k++) {
             if (i <= k) {
-                deck.push(<Card sides={{ sideA: i, sideB: k }}></Card>)
+                cardValues.push({ sideA: i, sideB: k });
             }
         }
     }
-//Function to generate random cards in each hand
-    let getNextCard = () => {
-        return getRandomCard();
+    //Function to generate random cards in each hand
+    let getNextCard = (playerHand) => {
+        return getRandomCard(playerHand);
     }
 
-    const getRandomCard = () => {
+    const getRandomCard = (playerHand) => {
         const randomIndex = Math.floor(Math.random() * deck.length);
-        return deck.splice(randomIndex, 1)[0];
+        let cardValue = cardValues.splice(randomIndex, 1)[0];
+        /* let card;
+        if(){
+            card = <Card rotation={playerHand < 2 ? '90' : '90'} showFace={playerHand == 1 ? true : false} sides={{ sideA: cardValue.sideA, sideB: cardValue.sideB }}></Card>;
+        }else if(){
+            card = <Card rotation={playerHand < 2 ? '90' : '0'} showFace={playerHand == 1 ? true : false} sides={{ sideA: cardValue.sideA, sideB: cardValue.sideB }}></Card>;
+            }
+        }
+        return card; */
+        return <Card rotation={playerHand < 2 && playerHand === 0 ? '0' : '90'} showFace={playerHand === 1 ? true : false} sides={{ sideA: cardValue.sideA, sideB: cardValue.sideB }}></Card>;
     };
 
     const [numberOfPlayers, setNumberOfPlayers] = useState();
@@ -50,7 +60,7 @@ function Gamespace(props) {
         for (let i = 0; i < numberOfPlayers; i++) {
             let hand = [];
             for (let j = 0; j < numberOfCardsPerHand; j++) {
-                hand.push(getNextCard())
+                hand.push(getNextCard(i))
             }
 
             tempHands.push(hand);

@@ -5,7 +5,9 @@
 .default img {
     object-fit: contain;
     width: 120px;
-    display: inline-flex;
-    flex-wrap: wrap;
     margin: -20px;
+    display: inline-table;
+    margin: -30px;
 }
+
+
