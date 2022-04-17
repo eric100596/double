@@ -5,7 +5,7 @@ function Card(props) {
   return (
     <>
       <div className='default'>
-        <img style={{transformOrigin: 'center center', transform: `rotate(${props.rotation}deg)`}} src={props.showFace ? props.sides.sideA + '_' + props.sides.sideB + '.png' : 'Dbl-7 Logo.png'} ></img> 
+        <img style={{transformOrigin: 'center center', transform: `rotate(${props.rotation}deg)`}} src={props.showFace ? props.sides.sideA + '_' + props.sides.sideB + '_'+ props.direction +'.png' : 'Dbl-7 Logo.png'} ></img> 
       </div>
     </>
   )
@@ -13,7 +13,8 @@ function Card(props) {
 
 Card.defaultProps = {
   rotation: "0", 
-  showFace: true 
+  showFace: true,
+  direction: 'vertical'
 }
 
 export default Card;
