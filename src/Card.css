@@ -4,7 +4,7 @@
 
 .default img {
     object-fit: contain;
-    width: 120px;
+    width: 100px;
     margin: -20px;
     display: inline-table;
     margin: -30px;
