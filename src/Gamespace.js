@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
+import Table from './Table';
 import './Gamespace.css';
 
 function Gamespace(props) {
     const [handWithHighestCard, setHandWithHighestCard] = useState();
+    const [playedCards, setPlayedCards] = useState([]);
 
     const cardValues = useRef([]);
     //Use for loop to create deck    
@@ -96,26 +98,28 @@ function Gamespace(props) {
     let handOrder = useRef([1, 2, 0, 3]);
 
     const setCurrentHand = (hand) => {
-        while(hand != handOrder.current[0]){
+        while (hand != handOrder.current[0]) {
             let oldHand = handOrder.current.shift();
             handOrder.current.push(oldHand);
         }
 
         return handOrder.current[0];
     }
- 
+
     useEffect(() => {
-        if(!handWithHighestCard){
+        if (!handWithHighestCard) {
             return;
         }
-        console.log('Hand ' + handWithHighestCard);
-        console.log(setCurrentHand(handWithHighestCard));
-
-        const moveToCenter = (handWithHighestCard, index) => {
-            let firstPlay = handWithHighestCard.index[5];
-                return <Card sides={{ sideA: firstPlay.sideA, sideB: firstPlay.sideB }}></Card>; 
-        };
+        playCard(hands[handWithHighestCard], 5);
     }, [handWithHighestCard])
+
+    const playCard = (hand, cardIndex) => {
+        setPlayedCards([...playedCards, hand.splice(cardIndex, 1)]);
+    };
+
+    useEffect(() => {
+
+    }, [playedCards])
 
 
     return (
@@ -124,11 +128,12 @@ function Gamespace(props) {
                 <div className="gameStatus">
                     <div className='playArea'>
                         <h1>GAMESPACE</h1>
-                        <div className="table">
+                        <div className="gamespace">
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'end', alignSelf: 'center', rowGap: '45px', paddingRight: '30px' }}>{hands[3]}</div>
                             <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', columnGap: '20px' }}>{hands[0]}</div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, alignSelf: 'center', rowGap: '45px', paddingLeft: '30px' }}>{hands[2]}</div>
-                            <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', alignSelf: 'end', columnGap: '20px'}}>{hands[1]}</div>
+                            <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', alignSelf: 'end', columnGap: '20px' }}>{hands[1]}</div>
+                            <Table> {playedCards} </Table>
                         </div>
                         <div className='gameControls'>
                             <label>How many players?</label>
