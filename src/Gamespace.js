@@ -5,17 +5,23 @@ import './Gamespace.css';
 
 function Gamespace(props) {
     const [handWithHighestCard, setHandWithHighestCard] = useState();
+    const sevenSevenIndex = useRef();
     const [playedCards, setPlayedCards] = useState([]);
+    const highestDouble = useRef(-1);
 
     const cardValues = useRef([]);
-    //Use for loop to create deck    
-    for (let i = 0; i < 8; i++) {
-        for (let k = 0; k < 8; k++) {
-            if (i <= k) {
-                cardValues.current.push({ sideA: i, sideB: k });
+    //Use for loop to create deck
+    useEffect(() => {
+        for (let i = 0; i < 8; i++) {
+            for (let k = 0; k < 8; k++) {
+                if (i <= k) {
+                    console.log({ sideA: i, sideB: k });
+                    cardValues.current.push({ sideA: i, sideB: k });
+                }
             }
         }
-    }
+    }, []);
+
     //Function to generate random cards in each hand
     let getNextCard = (playerHand) => {
         return getRandomCard(playerHand);
@@ -48,13 +54,13 @@ function Gamespace(props) {
             return;
         }
 
-        let highestDouble = -1;
         for (let [index, hand] of hands.entries()) {
-            for (let card of hand) {
+            for (let [cardIndex, card] of hand.entries()) {
                 if (card.props.sides.sideA == card.props.sides.sideB) {
-                    if (highestDouble < card.props.sides.sideA) {
-                        highestDouble = card.props.sides.sideA;
+                    if (highestDouble.current < card.props.sides.sideA) {
+                        highestDouble.current = card.props.sides.sideA;
                         setHandWithHighestCard(index);
+                        sevenSevenIndex.current = cardIndex;
                     }
                 }
             }
@@ -107,19 +113,24 @@ function Gamespace(props) {
     }
 
     useEffect(() => {
-        if (!handWithHighestCard) {
+        if (handWithHighestCard === undefined) {
             return;
         }
-        playCard(hands[handWithHighestCard], 5);
+        playFirstCard(hands[handWithHighestCard], sevenSevenIndex.current);
     }, [handWithHighestCard])
 
-    const playCard = (hand, cardIndex) => {
-        setPlayedCards([...playedCards, hand.splice(cardIndex, 1)]);
+    const playFirstCard = (hand, cardIndex) => {
+        setPlayedCards(...playedCards, hand.splice(cardIndex, 1));
     };
 
-    useEffect(() => {
-
-    }, [playedCards])
+    const playCard = (hand, cardIndex, orientation, side, border) => {
+        console.log(playCard);
+        return (
+            <div> 
+                style={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'end', alignSelf: 'center', rowGap: '45px', paddingRight: '30px' }} {hands[3]} onClick={() => playCard()}
+            </div>
+         );
+    };
 
 
     return (
@@ -133,7 +144,11 @@ function Gamespace(props) {
                             <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', columnGap: '20px' }}>{hands[0]}</div>
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, alignSelf: 'center', rowGap: '45px', paddingLeft: '30px' }}>{hands[2]}</div>
                             <div style={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: '1fr', gridTemplateRows: '1fr', gridColumn: 1, gridRow: 1, justifySelf: 'center', alignSelf: 'end', columnGap: '20px' }}>{hands[1]}</div>
-                            <Table> {playedCards} </Table>
+                            <Table> {
+                                playedCards.map((card) => {
+                                    return (<Card {...card.props} showFace={true} />)
+                                })
+                            } </Table>
                         </div>
                         <div className='gameControls'>
                             <label>How many players?</label>
